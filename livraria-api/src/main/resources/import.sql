@@ -1,0 +1,2 @@
+INSERT INTO users (username, password, email) VALUES ('mauricio', '1234', 'mauro@gmail.com');
+INSERT INTO book (title, author, publisher, price, description, category, release, stock, img_Url) VALUES ('goku', 'vitor', 'za', '22.44', 'adasa', 'asadsad', 'adadad', '22', 'aadad');
