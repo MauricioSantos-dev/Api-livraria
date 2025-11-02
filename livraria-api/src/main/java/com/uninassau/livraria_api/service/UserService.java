@@ -36,8 +36,9 @@ public class UserService {
         User user= userRepository.findById(userId).orElseThrow(
                 () -> new RuntimeException("Usuario nao encontrado!")
         );
-       return user.getWishlist();
 
+
+        return user.getWishlist();
     }
 
 
