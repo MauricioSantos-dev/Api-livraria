@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -35,6 +34,9 @@ public class BookController {
     public ResponseEntity findByCategory(@PathVariable String category) {
         try {
             List<Book> books = bookService.findByCategory(category);
+            if (books.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
             return  ResponseEntity.ok().body(books);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
