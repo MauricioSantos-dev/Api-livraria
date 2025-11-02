@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Getter
 @Setter
@@ -27,6 +28,5 @@ public class Book {
     private String description;
     private String category;
     private String release;
-
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class BookService {
@@ -18,6 +19,11 @@ private BookRepository bookRepository;
 
 
         return books.stream().filter(book -> book.getStock() > 0).toList();
+    }
+
+    public List<Book> findByCategory(String category) {
+       return bookRepository.findByCategory(category);
+
     }
 
 

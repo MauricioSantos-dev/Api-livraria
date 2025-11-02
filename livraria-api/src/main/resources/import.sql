@@ -1,5 +1,6 @@
 INSERT INTO users (username, password, email) VALUES ('mauricio', '1234', 'mauro@gmail.com');
 INSERT INTO users (username, password, email) VALUES ('JULIO', '45994', 'jujuquerdoce@gmail.com');
+
 INSERT INTO book (title, author, publisher, price, description, category, release, stock, img_Url) VALUES('1984', 'George Orwell', 'Companhia das Letras', 45.90, 'Um clássico distópico sobre um regime totalitário.', 'Ficção', '1949-06-08', 20, 'https://m.media-amazon.com/images/I/81ay5XKxWbL.jpg');
 INSERT INTO book (title, author, publisher, price, description, category, release, stock, img_Url) VALUES('A Revolução dos Bichos', 'George Orwell', 'Companhia das Letras', 39.90, 'Uma sátira política sobre uma fazenda tomada por animais.', 'Ficção', '1945-08-17', 18, 'https://m.media-amazon.com/images/I/71UXvTt3ZHL.jpg');
 INSERT INTO book (title, author, publisher, price, description, category, release, stock, img_Url) VALUES('Admirável Mundo Novo', 'Aldous Huxley', 'Globo Livros', 49.90, 'Uma sociedade futurista onde a felicidade é obrigatória.', 'Ficção', '1932-01-01', 15, 'https://m.media-amazon.com/images/I/71zvV3C+u0L.jpg');
