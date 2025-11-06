@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/livraria-api.iml" filepath="$PROJECT_DIR$/.idea/livraria-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Api-livraria.iml" filepath="$PROJECT_DIR$/.idea/Api-livraria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/livraria-api/livraria-api.iml" filepath="$PROJECT_DIR$/livraria-api/livraria-api.iml" />
     </modules>
   </component>
 </project>
