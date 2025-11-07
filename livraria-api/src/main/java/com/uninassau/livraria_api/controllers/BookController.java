@@ -1,7 +1,7 @@
 package com.uninassau.livraria_api.controllers;
 
 import com.uninassau.livraria_api.entities.Book;
-import com.uninassau.livraria_api.service.BookService;
+import com.uninassau.livraria_api.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

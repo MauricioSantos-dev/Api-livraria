@@ -1,9 +1,8 @@
-package com.uninassau.livraria_api.service;
+package com.uninassau.livraria_api.services;
 
 import com.uninassau.livraria_api.entities.*;
 import com.uninassau.livraria_api.repositories.BookRepository;
-import com.uninassau.livraria_api.repositories.CartItemRepository;
-import com.uninassau.livraria_api.repositories.ShopCartRepository;
+import com.uninassau.livraria_api.repositories.ShoppingCartRepository;
 import com.uninassau.livraria_api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ShopCartService {
+public class ShoppingCartService {
 
 
     @Autowired
@@ -21,45 +20,45 @@ public class ShopCartService {
     private BookRepository bookRepository;
 
     @Autowired
-    private ShopCartRepository shopCartRepository;
+    private ShoppingCartRepository shoppingCartRepository;
 
 
 
-    public ShopCart addcartItem(Long userId, Long bookId, CartItemDTO cartItemDTO) {
+    public ShoppingCart addcartItem(Long userId, Long bookId, CartItemDTO cartItemDTO) {
         User user= userRepository.findById(userId).orElseThrow(
                 () -> new RuntimeException("Usuario nao encontrado!")
         );
         Book book= bookRepository.findById(bookId).orElseThrow(
                 () -> new RuntimeException("Livro nao encontrado!")
         );
-        ShopCart shopCart = shopCartRepository.findByUser(user)
+        ShoppingCart shoppingCart = shoppingCartRepository.findByUser(user)
                 .orElseGet(() -> {
-                    ShopCart novoCart = new ShopCart();
+                    ShoppingCart novoCart = new ShoppingCart();
                     novoCart.setUser(user);
-                    return shopCartRepository.save(novoCart);
+                    return shoppingCartRepository.save(novoCart);
                 });
 
         CartItem cartItem = new CartItem();
         cartItem.setBook(book);
-        cartItem.setCart(shopCart);
+        cartItem.setCart(shoppingCart);
         cartItem.setQuantity(cartItemDTO.getQuantity());
 
-        shopCart.getItems().add(cartItem);
+        shoppingCart.getItems().add(cartItem);
 
-        shopCartRepository.save(shopCart);
+        shoppingCartRepository.save(shoppingCart);
 
-        return shopCart;
+        return shoppingCart;
     }
 
     public List<CartItem> getcartItem(Long userId) {
         User user= userRepository.findById(userId).orElseThrow(
                 () -> new RuntimeException("Usuario nao encontrado!")
         );
-        ShopCart shopCart = shopCartRepository.findByUser(user).orElseThrow(
+        ShoppingCart shoppingCart = shoppingCartRepository.findByUser(user).orElseThrow(
                 () -> new RuntimeException("Nenhum item encontrado!")
         );
 
-       return shopCart.getItems();
+       return shoppingCart.getItems();
 
     }
 

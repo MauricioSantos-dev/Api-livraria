@@ -2,12 +2,10 @@ package com.uninassau.livraria_api.controllers;
 
 import com.uninassau.livraria_api.entities.Book;
 import com.uninassau.livraria_api.entities.User;
-import com.uninassau.livraria_api.repositories.UserRepository;
-import com.uninassau.livraria_api.service.UserService;
+import com.uninassau.livraria_api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.function.EntityResponse;
 
 import java.util.List;
 

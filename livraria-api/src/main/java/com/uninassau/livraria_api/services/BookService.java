@@ -1,4 +1,4 @@
-package com.uninassau.livraria_api.service;
+package com.uninassau.livraria_api.services;
 
 import com.uninassau.livraria_api.entities.Book;
 import com.uninassau.livraria_api.repositories.BookRepository;
@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class BookService {

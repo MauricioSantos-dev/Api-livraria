@@ -1,12 +1,8 @@
-package com.uninassau.livraria_api.service;
+package com.uninassau.livraria_api.services;
 
-import com.uninassau.livraria_api.entities.CartItem;
-import com.uninassau.livraria_api.entities.ShopCart;
 import com.uninassau.livraria_api.entities.User;
 import com.uninassau.livraria_api.entities.Book;
 import com.uninassau.livraria_api.repositories.BookRepository;
-import com.uninassau.livraria_api.repositories.CartItemRepository;
-import com.uninassau.livraria_api.repositories.ShopCartRepository;
 import com.uninassau.livraria_api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
