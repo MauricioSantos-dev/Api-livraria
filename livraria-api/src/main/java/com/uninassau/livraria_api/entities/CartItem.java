@@ -1,5 +1,6 @@
 package com.uninassau.livraria_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +25,6 @@ public class CartItem {
 
     @ManyToOne
     @JoinColumn(name = "shopcart_id")
+    @JsonBackReference
     private ShopCart cart;
 }

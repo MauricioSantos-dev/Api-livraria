@@ -8,6 +8,8 @@ import com.uninassau.livraria_api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ShopCartService {
 
@@ -47,6 +49,18 @@ public class ShopCartService {
         shopCartRepository.save(shopCart);
 
         return shopCart;
+    }
+
+    public List<CartItem> getcartItem(Long userId) {
+        User user= userRepository.findById(userId).orElseThrow(
+                () -> new RuntimeException("Usuario nao encontrado!")
+        );
+        ShopCart shopCart = shopCartRepository.findByUser(user).orElseThrow(
+                () -> new RuntimeException("Nenhum item encontrado!")
+        );
+
+       return shopCart.getItems();
+
     }
 
 }
