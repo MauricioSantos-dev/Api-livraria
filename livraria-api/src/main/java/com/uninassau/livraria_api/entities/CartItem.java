@@ -26,8 +26,11 @@ public class CartItem {
     private String title;
     private String imgUrl;
 
+
     @ManyToOne
     @JoinColumn(name = "shopcart_id")
     @JsonBackReference
     private ShoppingCart cart;
+
+
 }

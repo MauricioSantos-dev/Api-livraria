@@ -4,11 +4,14 @@ import com.uninassau.livraria_api.entities.CartItem;
 
 public class CartItemDTO {
 
+    private Long id;
     private Long bookId;
     private String title;
     private int quantity;
     private double price;
     private String imgUrl;
+
+
 
 
     public Long getBookId() {
@@ -51,14 +54,25 @@ public class CartItemDTO {
         this.imgUrl = imgUrl;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public CartItemDTO() {
     }
 
     public CartItemDTO(CartItem cartItem) {
-        this.bookId = cartItem.getId();
+        this.id = cartItem.getId();
+        this.bookId = cartItem.getBook().getId();
         this.title = cartItem.getTitle();
         this.quantity = cartItem.getQuantity();
         this.price = cartItem.getPrice();
         this.imgUrl = cartItem.getImgUrl();
+
     }
+
 }

@@ -35,4 +35,14 @@ public class ShoppingCartController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PutMapping("{cartItemID}/removeitem")
+    public ResponseEntity removeItemCart(@PathVariable Long cartItemID){
+        try {
+            shoppingCartService.removeItemCart(cartItemID);
+            return ResponseEntity.ok().build();
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }
