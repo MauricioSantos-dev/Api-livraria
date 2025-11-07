@@ -2,6 +2,7 @@ package com.uninassau.livraria_api.controllers;
 
 import com.uninassau.livraria_api.dto.CartItemDTO;
 import com.uninassau.livraria_api.dto.CartItemRequestDTO;
+import com.uninassau.livraria_api.dto.ShoppingCartDTO;
 import com.uninassau.livraria_api.services.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class ShoppingCartController {
     @GetMapping("{userId}/shopcart")
     public ResponseEntity getShopCart(@PathVariable Long userId){
         try {
-           List<CartItemDTO> getcartItem= shoppingCartService.getcartItem(userId);
+           ShoppingCartDTO getcartItem= shoppingCartService.getcartItem(userId);
             return ResponseEntity.ok(getcartItem);
         } catch (Exception ex) {
             return ResponseEntity.badRequest().build();

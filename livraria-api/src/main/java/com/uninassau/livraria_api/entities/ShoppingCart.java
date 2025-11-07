@@ -28,4 +28,6 @@ public class ShoppingCart {
     @JsonManagedReference
     private List<CartItem> items= new ArrayList<>();
 
+    private double price;
+
 }

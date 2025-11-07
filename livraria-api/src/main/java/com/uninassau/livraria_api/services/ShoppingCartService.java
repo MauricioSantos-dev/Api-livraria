@@ -2,6 +2,7 @@ package com.uninassau.livraria_api.services;
 
 import com.uninassau.livraria_api.dto.CartItemDTO;
 import com.uninassau.livraria_api.dto.CartItemRequestDTO;
+import com.uninassau.livraria_api.dto.ShoppingCartDTO;
 import com.uninassau.livraria_api.entities.*;
 import com.uninassau.livraria_api.repositories.BookRepository;
 import com.uninassau.livraria_api.repositories.CartItemRepository;
@@ -44,6 +45,8 @@ public class ShoppingCartService {
                     return shoppingCartRepository.save(novoCart);
                 });
 
+
+
         Optional<CartItem> existingItemOpt = shoppingCart.getItems().stream()
                 .filter(item -> item.getBook().getId().equals(bookId))
                 .findFirst();
@@ -57,6 +60,7 @@ public class ShoppingCartService {
 
 
             existingItem.setPrice(newQuantity * book.getPrice());
+
         } else {
 
             double finalprice = cartItemRequestDTO.getQuantity() * book.getPrice();
@@ -69,14 +73,21 @@ public class ShoppingCartService {
             cartItem.setTitle(book.getTitle());
 
 
+
             shoppingCart.getItems().add(cartItem);
         }
+
+
+
+
         shoppingCartRepository.save(shoppingCart);
+
+
 
         return shoppingCart;
     }
 
-    public List<CartItemDTO> getcartItem(Long userId) {
+    public ShoppingCartDTO getcartItem(Long userId) {
         User user= userRepository.findById(userId).orElseThrow(
                 () -> new RuntimeException("Usuario nao encontrado!")
         );
@@ -84,10 +95,8 @@ public class ShoppingCartService {
                 () -> new RuntimeException("Nenhum item encontrado!")
         );
 
-        return shoppingCart.getItems()
-                .stream()
-                .map(CartItemDTO::new)
-                .collect(Collectors.toList());
+
+        return new ShoppingCartDTO(shoppingCart);
 
     }
     public CartItem removeItemCart(Long cartItemID) {
