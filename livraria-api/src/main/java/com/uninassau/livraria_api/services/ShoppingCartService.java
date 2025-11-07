@@ -1,5 +1,7 @@
 package com.uninassau.livraria_api.services;
 
+import com.uninassau.livraria_api.dto.CartItemDTO;
+import com.uninassau.livraria_api.dto.CartItemRequestDTO;
 import com.uninassau.livraria_api.entities.*;
 import com.uninassau.livraria_api.repositories.BookRepository;
 import com.uninassau.livraria_api.repositories.ShoppingCartRepository;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ShoppingCartService {
@@ -24,7 +27,7 @@ public class ShoppingCartService {
 
 
 
-    public ShoppingCart addcartItem(Long userId, Long bookId, CartItemDTO cartItemDTO) {
+    public ShoppingCart addcartItem(Long userId, Long bookId, CartItemRequestDTO cartItemRequestDTO) {
         User user= userRepository.findById(userId).orElseThrow(
                 () -> new RuntimeException("Usuario nao encontrado!")
         );
@@ -38,10 +41,14 @@ public class ShoppingCartService {
                     return shoppingCartRepository.save(novoCart);
                 });
 
+        double finalprice = cartItemRequestDTO.getQuantity() * book.getPrice();
         CartItem cartItem = new CartItem();
         cartItem.setBook(book);
         cartItem.setCart(shoppingCart);
-        cartItem.setQuantity(cartItemDTO.getQuantity());
+        cartItem.setQuantity(cartItemRequestDTO.getQuantity());
+        cartItem.setPrice(finalprice);
+        cartItem.setImgUrl(book.getImgUrl());
+        cartItem.setTitle(book.getTitle());
 
         shoppingCart.getItems().add(cartItem);
 
@@ -50,7 +57,7 @@ public class ShoppingCartService {
         return shoppingCart;
     }
 
-    public List<CartItem> getcartItem(Long userId) {
+    public List<CartItemDTO> getcartItem(Long userId) {
         User user= userRepository.findById(userId).orElseThrow(
                 () -> new RuntimeException("Usuario nao encontrado!")
         );
@@ -58,7 +65,10 @@ public class ShoppingCartService {
                 () -> new RuntimeException("Nenhum item encontrado!")
         );
 
-       return shoppingCart.getItems();
+        return shoppingCart.getItems()
+                .stream()
+                .map(CartItemDTO::new)
+                .collect(Collectors.toList());
 
     }
 

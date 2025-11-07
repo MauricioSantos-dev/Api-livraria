@@ -22,6 +22,9 @@ public class CartItem {
     private Book book;
 
     private int quantity;
+    private double price;
+    private String title;
+    private String imgUrl;
 
     @ManyToOne
     @JoinColumn(name = "shopcart_id")

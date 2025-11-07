@@ -1,6 +1,7 @@
-package com.uninassau.livraria_api.entities;
+package com.uninassau.livraria_api.dto;
 
-public class CartItemDTO {
+public class CartItemRequestDTO {
+
     private int quantity;
 
     public int getQuantity() {
