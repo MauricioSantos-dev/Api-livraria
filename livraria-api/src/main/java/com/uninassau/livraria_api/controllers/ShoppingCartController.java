@@ -27,7 +27,7 @@ public class ShoppingCartController {
     }
 
 
-    @GetMapping("{userId}/shopcart")
+    @GetMapping("/{userId}/shopcart")
     public ResponseEntity getShopCart(@PathVariable Long userId){
         try {
            ShoppingCartDTO getcartItem= shoppingCartService.getcartItem(userId);
@@ -37,7 +37,7 @@ public class ShoppingCartController {
         }
     }
 
-    @PutMapping("{cartItemID}/removeitem")
+    @PutMapping("/{cartItemID}/removeitem")
     public ResponseEntity removeItemCart(@PathVariable Long cartItemID){
         try {
             shoppingCartService.removeItemCart(cartItemID);
@@ -46,4 +46,15 @@ public class ShoppingCartController {
             return ResponseEntity.badRequest().build();
         }
     }
-}
+
+    @PutMapping("/{cartItemID}/additem")
+    public ResponseEntity addItemCart(@PathVariable Long cartItemID) {
+        try {
+            shoppingCartService.addItemCart(cartItemID);
+            return ResponseEntity.ok().build();
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    }
+

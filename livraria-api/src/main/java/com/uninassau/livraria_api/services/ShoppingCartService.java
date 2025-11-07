@@ -126,5 +126,26 @@ public class ShoppingCartService {
     }
 
 
+    public CartItem addItemCart(Long cartItemID) {
+
+        CartItem cartItem = cartItemRepository.findById(cartItemID).orElseThrow(
+                () -> new RuntimeException("Item nao encontrado!")
+        );
+
+
+        Book book = cartItem.getBook();
+
+
+        int quantity = cartItem.getQuantity() + 1;
+
+        cartItem.setQuantity(quantity);
+        double newprice = book.getPrice() * cartItem.getQuantity();
+        cartItem.setPrice(newprice);
+
+
+        return cartItemRepository.save(cartItem);
+
+    }
+
 
 }
