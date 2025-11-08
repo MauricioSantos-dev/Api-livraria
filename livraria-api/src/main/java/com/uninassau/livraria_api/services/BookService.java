@@ -24,6 +24,15 @@ private BookRepository bookRepository;
        return bookRepository.findByCategory(category);
 
     }
+    public Book findById(Long id) {
+        return bookRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Livro nao encontrado!")
+        );
+    }
+
+    public List<Book> findByTitle(String title) {
+        return bookRepository.findByTitleContainingIgnoreCase(title);
+    }
 
 
 }

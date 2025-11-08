@@ -4,9 +4,7 @@ import com.uninassau.livraria_api.entities.Book;
 import com.uninassau.livraria_api.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,6 +36,26 @@ public class BookController {
                 return ResponseEntity.noContent().build();
             }
             return  ResponseEntity.ok().body(books);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/{id}/book")
+    public ResponseEntity findById(@PathVariable Long id) {
+        try {
+            Book book = bookService.findById(id);
+            return  ResponseEntity.ok().body(book);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity findByTitle(@RequestParam String title) {
+        try {
+           List<Book> book= bookService.findByTitle(title);
+            return  ResponseEntity.ok().body(book);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
