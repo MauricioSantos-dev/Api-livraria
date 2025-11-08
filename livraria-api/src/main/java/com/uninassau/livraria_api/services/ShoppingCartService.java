@@ -99,11 +99,15 @@ public class ShoppingCartService {
         return new ShoppingCartDTO(shoppingCart);
 
     }
-    public CartItem removeItemCart(Long cartItemID) {
+    public CartItem removeItemCart(Long cartItemID, Long userId) {
 
         CartItem cartItem = cartItemRepository.findById(cartItemID).orElseThrow(
                 () -> new RuntimeException("Item nao encontrado!")
         );
+
+        if (!cartItem.getCart().getUser().getId().equals(userId)) {
+            throw new RuntimeException("Esse item nao pertence a voce");
+        }
         ShoppingCart shoppingCart =  cartItem.getCart();
 
 
@@ -126,12 +130,14 @@ public class ShoppingCartService {
     }
 
 
-    public CartItem addItemCart(Long cartItemID) {
+    public CartItem addItemCart(Long cartItemID, Long userId) {
 
         CartItem cartItem = cartItemRepository.findById(cartItemID).orElseThrow(
                 () -> new RuntimeException("Item nao encontrado!")
         );
-
+        if (!cartItem.getCart().getUser().getId().equals(userId)) {
+            throw new RuntimeException("Esse item nao pertence a voce");
+        }
 
         Book book = cartItem.getBook();
 
