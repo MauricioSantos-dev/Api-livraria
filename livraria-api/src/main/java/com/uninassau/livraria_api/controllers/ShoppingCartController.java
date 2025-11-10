@@ -82,5 +82,17 @@ public class ShoppingCartController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PutMapping("/{ShoppingCartId}/removeall")
+    public ResponseEntity removeAll(Principal principal, @PathVariable Long ShoppingCartId) {
+        try {
+            String email= principal.getName();
+            User user = userRepository.findByEmail(email);
+            shoppingCartService.removeAll(ShoppingCartId, user.getId());
+            return ResponseEntity.ok().build();
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
     }
 

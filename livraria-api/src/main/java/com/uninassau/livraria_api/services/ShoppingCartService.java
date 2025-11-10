@@ -153,5 +153,19 @@ public class ShoppingCartService {
 
     }
 
+    public ShoppingCart removeAll(Long ShoppingCartId, Long userId) {
+
+        ShoppingCart shoppingCart = shoppingCartRepository.findById(ShoppingCartId).orElseThrow(
+                () -> new RuntimeException("Item nao encontrado!")
+        );
+        if (!shoppingCart.getUser().getId().equals(userId)) {
+            throw new RuntimeException("Esse item nao pertence a voce");
+        }
+
+        shoppingCart.getItems().clear();
+        return shoppingCartRepository.save(shoppingCart);
+    }
+
+
 
 }
