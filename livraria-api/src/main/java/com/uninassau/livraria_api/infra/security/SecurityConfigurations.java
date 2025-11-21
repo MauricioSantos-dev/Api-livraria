@@ -35,6 +35,9 @@ public class SecurityConfigurations {
                                 .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/books").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/search").permitAll()
+                                .requestMatchers(HttpMethod.GET, "category/{category}").permitAll()
+                                .requestMatchers(HttpMethod.GET, "{id}/book").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/users/listar").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 )
@@ -55,7 +58,7 @@ public class SecurityConfigurations {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:3000"));
+        config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
