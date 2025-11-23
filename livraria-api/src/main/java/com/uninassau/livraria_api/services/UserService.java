@@ -43,6 +43,13 @@ public class UserService {
         return user.getWishlist();
     }
 
+    public String getUser(Long userId){
+        User user= userRepository.findById(userId).orElseThrow(
+                () -> new RuntimeException("Usuario nao encontrado!")
+        );
+        return user.getName();
+
+    }
 
 
 }

@@ -47,4 +47,16 @@ public class UserController {
         }
         }
 
+        @GetMapping("/user")
+        public ResponseEntity getUser(Principal principal) {
+        try {
+            String email= principal.getName();
+            User user= userRepository.findByEmail(email);
+           String name= userService.getUser(user.getId());
+            return ResponseEntity.ok().body(name);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
+        }
+
 }
