@@ -1,8 +1,8 @@
 API RESTful desenvolvida em Spring Boot, Spring Security, JPA/Hibernate e H2, fornecendo funcionalidades completas de gerenciamento de livros, carrinho, wishlist e autenticação de usuários, alem de ser estruturada no modelo mvc.
 
--Funcionalidades Principais:
+Funcionalidades Principais:
 
--Autenticação & Usuário
+- Autenticação & Usuário
 
 POST /login — Login na plataforma
 
@@ -10,7 +10,7 @@ POST /cadastro — Criar nova conta
 
 GET /usuario/nome — Retorna o nome do usuário autenticado
 
--Livros
+- Livros
 
 GET /livros — Listar todos os livros
 
@@ -20,13 +20,13 @@ GET /livros/nome/{nome} — Buscar livro pelo nome
 
 GET /livros/categoria/{categoria} — Filtrar livros por categoria
 
--Wishlist:
+- Wishlist:
 
 POST /wishlist/adicionar — Adicionar livro à wishlist
 
 GET /wishlist — Exibir wishlist do usuário
 
--Carrinho
+- Carrinho
 
 POST /carrinho/adicionar — Adicionar livro ao carrinho
 
@@ -38,17 +38,17 @@ PUT /carrinho/remover-item — Diminuir quantidade de um item
 
 PUT /carrinho/remover-tudo — Remover todos os itens do carrinho
 
--Tecnologias Utilizadas:
+- Tecnologias Utilizadas:
 
--Java 21
+- Java 21
 
--Spring Boot
+- Spring Boot
 
--Spring Web
+- Spring Web
 
--Spring Security (com token JWT)
+- Spring Security (com token JWT)
 
--Spring Data JPA
+- Spring Data JPA
 
 -Hibernate
 
