@@ -38,7 +38,7 @@ PUT /carrinho/remover-item — Diminuir quantidade de um item
 
 PUT /carrinho/remover-tudo — Remover todos os itens do carrinho
 
-- Tecnologias Utilizadas:
+Tecnologias Utilizadas:
 
 - Java 21
 
@@ -50,10 +50,10 @@ PUT /carrinho/remover-tudo — Remover todos os itens do carrinho
 
 - Spring Data JPA
 
--Hibernate
+- Hibernate
 
--H2
+- H2
 
--Lombok
+- Lombok
 
--Maven
+- Maven
