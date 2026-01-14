@@ -6,37 +6,37 @@ Funcionalidades Principais:
 
 POST /login — Login na plataforma
 
-POST /cadastro — Criar nova conta
+POST /register — Criar nova conta
 
-GET /usuario/nome — Retorna o nome do usuário autenticado
+GET /user — Retorna o nome do usuário autenticado
 
 - Livros
 
-GET /livros — Listar todos os livros
+GET /books — Listar todos os livros
 
-GET /livros/{id} — Buscar livro pelo ID
+GET /{id}/book — Buscar livro pelo ID
 
-GET /livros/nome/{nome} — Buscar livro pelo nome
+GET /search — Buscar livro pelo nome
 
-GET /livros/categoria/{categoria} — Filtrar livros por categoria
+GET /category/{category} — Filtrar livros por categoria
 
 - Wishlist:
 
-POST /wishlist/adicionar — Adicionar livro à wishlist
+POST /addwishlist/{bookId} — Adicionar livro à wishlist
 
 GET /wishlist — Exibir wishlist do usuário
 
 - Carrinho
 
-POST /carrinho/adicionar — Adicionar livro ao carrinho
+POST /{bookId}/addcartitem — Adicionar livro ao carrinho
 
-GET /carrinho — Exibir carrinho
+GET /shopcart — Exibir carrinho
 
-PUT /carrinho/adicionar-item — Aumentar quantidade de um item
+PUT /{cartItemID}/additem— Aumentar quantidade de um item
 
-PUT /carrinho/remover-item — Diminuir quantidade de um item
+PUT /{cartItemID}/removeitem — Diminuir quantidade de um item
 
-PUT /carrinho/remover-tudo — Remover todos os itens do carrinho
+PUT /{ShoppingCartId}/removeall — Remover todos os itens do carrinho
 
 Tecnologias Utilizadas:
 
